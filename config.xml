@@ -38,7 +38,7 @@
 	
 	<plugin name="cordova-plugin-splashscreen" source="npm"/>
 	<plugin name="cordova-plugin-media-capture" source="npm"/>
-	<plugin name="cordova-plugin-speech-recognition" source="npm" />
+	<plugin name="cordova-plugin-speech-recognition2" source="npm" />
 	
 
    <access origin="*"/>
