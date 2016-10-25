@@ -25,16 +25,27 @@ function onDeviceReady() {
     recognition.onresult = function(event) {
         if (event.results.length > 0) {
             q.value = event.results[0][0].transcript;
-            //q.form.submit();
+            $( "#popupDialog" ).popup( "open" )
         }
     }
 }
 </script>
 <div data-role="page" data-theme="a">
-<div class="ui-field-contain">
-    <textarea id="q" name="q"></textarea>
+
     <img class="recbut" src="img/button.png" onclick="recognition.start()" />
-</div>
+
+
+
+        <div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<div data-role="header" data-theme="a" class="ui-corner-top">
+				<h4>Author</h4>
+			</div>
+			<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+				<textarea id="q" name="q"></textarea>
+			</div>
+        </div> <!--/popup-->
+
 </div>
      
 </body>
