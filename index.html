@@ -8,25 +8,52 @@
 
 <body>
 
-<script type="text/javascript">
-var recognition;
-document.addEventListener('deviceready', onDeviceReady, false);
+<button id="button" onclick="toggleStartStop()"></button>
+  <div style="border:dotted;padding:10px">
+    <span id="final_span"></span>
+    <span id="interim_span" style="color:grey"></span>
+  </div>
 
-function onDeviceReady() {
-    recognition = new SpeechRecognition();
-	recognition.lang = 'it-IT';
-    recognition.onresult = function(event) {
-        if (event.results.length > 0) {
-            q.value = event.results[0][0].transcript;
-            //q.form.submit();
+  <script type="text/javascript">
+    var recognizing;
+    var recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interim = true;
+    reset();
+    recognition.onend = reset;
+
+    recognition.onresult = function (event) {
+      var final = "";
+      var interim = "";
+      for (var i = 0; i < event.results.length; ++i) {
+        if (event.results[i].final) {
+          final += event.results[i][0].transcript;
+        } else {
+          interim += event.results[i][0].transcript;
         }
+      }
+      final_span.innerHTML = final;
+      interim_span.innerHTML = interim;
     }
-}
-</script>
-<form action="#">
-    <input type="search" id="q" name="q" size=60>
-    <input type="button" value="Click to Speak" onclick="recognition.start()">
-</form>
+
+    function reset() {
+      recognizing = false;
+      button.innerHTML = "Click to Speak";
+    }
+
+    function toggleStartStop() {
+      if (recognizing) {
+        recognition.stop();
+        reset();
+      } else {
+        recognition.start();
+        recognizing = true;
+        button.innerHTML = "Click to Stop";
+        final_span.innerHTML = "";
+        interim_span.innerHTML = "";
+      }
+    }
+  </script>
 
      
 </body>
