@@ -16,14 +16,17 @@
 
   <script type="text/javascript">
     var recognizing;
+    document.addEventListener('deviceready', onDeviceReady, false);
+    
+    function onDeviceReady() {
     var recognition = new SpeechRecognition();
     recognition.continuous = true;
     recognition.interim = true;
     reset();
     recognition.onend = reset;
-    document.addEventListener('deviceready', onDeviceReady, false);
+
     
-    function onDeviceReady() {
+
     recognition.onresult = function (event) {
       var final = "";
       var interim = "";
