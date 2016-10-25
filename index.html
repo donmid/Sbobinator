@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Audio To Text</title>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>  
-<link rel="stylesheet" href="themes/Borderlands-presequel.min.css" />
+<link rel="stylesheet" href="themes/sbobinator.min.css" />
 <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 <link rel="stylesheet" href="jquery-mobile/jquery.mobile.structure-1.4.5.min.css" />
 <link rel="stylesheet" href="themes/style.css" />
@@ -25,7 +25,7 @@ function onDeviceReady() {
     recognition.onresult = function(event) {
         if (event.results.length > 0) {
             q.value = event.results[0][0].transcript;
-            $( "#popupDialog" ).popup( "open" )
+            $( "#popupBasic" ).popup( "open" )
         }
     }
 }
@@ -35,18 +35,13 @@ function onDeviceReady() {
     <img class="recbut" src="img/button.png" onclick="recognition.start()" />
 
 
-
-        <div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
-        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-			<div data-role="header" data-theme="a" class="ui-corner-top">
-				<h4>Content</h4>
-			</div>
-			<div data-role="content" data-theme="a" class="ui-corner-bottom ui-content">
-				<textarea id="q" name="q"></textarea>
-			</div>
-        </div> <!--/popup-->
+     <div data-role="popup" id="popupBasic">
+	<p id="q" name="q"></p>
+</div><!--/popup-->
 
 </div>
      
+     
+
 </body>
 </html>
