@@ -21,7 +21,9 @@
     recognition.interim = true;
     reset();
     recognition.onend = reset;
-
+    document.addEventListener('deviceready', onDeviceReady, false);
+    
+    function onDeviceReady() {
     recognition.onresult = function (event) {
       var final = "";
       var interim = "";
@@ -34,6 +36,7 @@
       }
       final_span.innerHTML = final;
       interim_span.innerHTML = interim;
+    }
     }
 
     function reset() {
