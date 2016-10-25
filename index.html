@@ -34,10 +34,11 @@ function onDeviceReady() {
 
     <img class="recbut" src="img/button.png" onclick="recognition.start()" />
 
-<a href="#popupCloseRight" data-rel="popup" data-role="button" data-inline="true">Popup with close button right</a>
+<a href="#popupCloseRight"  data-rel="popup" data-role="button" >Popup with close button right</a>
 		
-		<div data-role="popup" id="popupCloseRight" class="ui-content" style="max-width:280px">
+		<div data-role="popup" id="popupCloseRight" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
 			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+            <p>I have a close button at the top right corner with simple HTML markup.</p>
             <textarea id="q" name="q"></textarea>
 		</div><!--/popup-->
 
