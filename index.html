@@ -15,10 +15,11 @@
   </div>
 
   <script type="text/javascript">
-    var recognizing;
+    
     document.addEventListener('deviceready', onDeviceReady, false);
     
     function onDeviceReady() {
+    var recognizing;
     var recognition = new SpeechRecognition();
     recognition.continuous = true;
     recognition.interim = true;
