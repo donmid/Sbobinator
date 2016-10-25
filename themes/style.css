@@ -1,0 +1,10 @@
+.ui-page {
+	background-image:url(../img/bg.png);
+    width: 100%;
+}
+.recbut {
+	width: 70%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
