@@ -8,40 +8,27 @@
 
 <body>
 
-<button id="button" onclick="toggleStartStop()"></button>
-  <div style="border:dotted;padding:10px">
-    <span id="final_span"></span>
-    <span id="interim_span" style="color:grey"></span>
-  </div>
+<textarea id="textarea" rows=10 cols=80></textarea>
+  <button id="button" onclick="toggleStartStop()"></button>
 
   <script type="text/javascript">
     
     document.addEventListener('deviceready', onDeviceReady, false);
     
     function onDeviceReady() {
-    var recognizing;
+     var recognizing;
     var recognition = new SpeechRecognition();
     recognition.continuous = true;
-    recognition.interim = true;
     reset();
     recognition.onend = reset;
 
-    
-
     recognition.onresult = function (event) {
-      var final = "";
-      var interim = "";
-      for (var i = 0; i < event.results.length; ++i) {
-        if (event.results[i].final) {
-          final += event.results[i][0].transcript;
-        } else {
-          interim += event.results[i][0].transcript;
+      for (var i = resultIndex; i < event.results.length; ++i) {
+        if (event.results.final) {
+          textarea.value += event.results[i][0].transcript;
         }
       }
-      final_span.innerHTML = final;
-      interim_span.innerHTML = interim;
     }
-    
 
     function reset() {
       recognizing = false;
@@ -56,8 +43,6 @@
         recognition.start();
         recognizing = true;
         button.innerHTML = "Click to Stop";
-        final_span.innerHTML = "";
-        interim_span.innerHTML = "";
       }
     }
       
