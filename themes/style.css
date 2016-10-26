@@ -1,7 +1,6 @@
 .ui-page {
 	background-image:url(../img/bg.png);
         background-size:cover;
-	background-attachment: fixed;
 }
 .ui-header {
 	background: none;
