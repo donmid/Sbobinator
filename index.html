@@ -32,11 +32,26 @@ function onDeviceReady() {
 </script>
 <div data-role="page" data-theme="a">
 
-    <img class="recbut" src="img/button.png" onclick="recognition.start()" />
+<!-- leftpanel1  -->
+	<div data-role="panel" id="menu" data-position="left" data-display="overlay" data-theme="a">
+        <a href="#" data-rel="close" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <h3>Impostazioni</h3>
+        <p>This panel is positioned on the left with the reveal display mode. The panel markup is <em>after</em> the header, content and footer in the source order.</p>
+        <p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>
+        <a href="#txtpopup"  data-rel="popup" data-role="button" >Ultimo audio</a>
+	</div><!-- /leftpanel1 -->
 
-<a href="#popupCloseRight"  data-rel="popup" data-role="button" >Popup with close button right</a>
+<div data-role="header">
+<a href="#menu" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-btn-b ui-icon-bars ui-btn-icon-notext">Menu</a>
+</div><!--header-->
+
+<div data-role="content">
+<img class="recbut" src="img/button.png" onclick="recognition.start()" />
+</div>
+
+
 		
-		<div data-role="popup" id="popupCloseRight" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
+		<div data-role="popup" id="txtpopup" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
 			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
             <p>I have a close button at the top right corner with simple HTML markup.</p>
             <textarea id="q" name="q"></textarea>
