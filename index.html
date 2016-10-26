@@ -22,7 +22,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     recognition = new SpeechRecognition();
 	recognition.lang = 'it-IT';
-	document.getElementById("recbut").src="img/button_load.gif";
+	//document.getElementById("recbut").src="img/button_load.gif";
     recognition.onresult = function(event) {
         if (event.results.length > 0) {
             q.value = event.results[0][0].transcript;
