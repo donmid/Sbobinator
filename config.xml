@@ -39,6 +39,8 @@
 	<plugin name="cordova-plugin-splashscreen" source="npm"/>
 	<plugin name="cordova-plugin-media-capture" source="npm"/>
 	<plugin name="cordova-plugin-speech-recognition2" source="npm" />
+	<gap:plugin name="com.appodeal.plugin" source="npm" />
+        <gap:plugin name="com.appodeal.googleplayservices" source="npm" />
 	
 
    <access origin="*"/>
