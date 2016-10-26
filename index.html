@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<script src="js/appodeal.js"></script>	
+<script src="js/appodeal.js"></script> 
 
 <script type="text/javascript">
 var recognition;
@@ -22,12 +22,12 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     recognition = new SpeechRecognition();
-	recognition.lang = window.localStorage.getItem("lang");
+	recognition.lang = window.localStorage.getItem("deflang");
 	//recognition.lang = 'it-IT';
     recognition.onresult = function(event) {
         if (event.results.length > 0) {
             q.value = event.results[0][0].transcript;
-	    document.getElementById("recbut").src="img/button.png";
+			document.getElementById("recbut").src="img/button.png";
             $( "#txtpopup" ).popup( "open" )
         }
     }
@@ -45,8 +45,8 @@ function Registra() {
 	<div data-role="panel" id="menu" data-position="left" data-display="overlay" data-theme="a">
         <a href="#" data-rel="close" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
         <h3>Impostazioni</h3>
-        <p><a href="#" name="ita" value="it-IT" onClick="lang();">Italiano</a></p>
-        <p><a href="#" onClick="lang('en-US');">English</a></p>
+        <p><a href="#" onClick="deflang('it-IT');">Italiano</a></p>
+        <p><a href="#" onClick="deflang('en-US')">English</a></p>
         <a href="#txtpopup"  data-rel="popup" data-role="button" >Ultimo audio</a>
 	</div><!-- /leftpanel1 -->
 
@@ -55,7 +55,7 @@ function Registra() {
 </div><!--header-->
 
 <div data-role="content">
-<img id="recbut" src="img/button.png" onclick="Registra()" />
+<img id="recbut" src="img/button.png" alt="rec" onclick="Registra()" />
 <p align="center">Tocca per registrare</p>
 </div>
 
@@ -71,13 +71,15 @@ function Registra() {
      
      
 <script type="text/javascript">
-function lang(language) {
+function deflang(language) {
 	switch (language) {
 		case "it-IT":
-		alert("Italiano selezionato");
+		window.localStorage.removeItem("deflang");
+		window.localStorage.setItem("deflang", "it-IT");
 		break;
 		case "en-US":
-		alert("English selected");
+		window.localStorage.removeItem("deflang");
+		window.localStorage.setItem("deflang", "en-US");
 		break;
 	}
 }
