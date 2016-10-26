@@ -22,11 +22,12 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     recognition = new SpeechRecognition();
-	recognition.lang = 'it-IT';
+	recognition.lang = window.localStorage.getItem("lang");
+	//recognition.lang = 'it-IT';
     recognition.onresult = function(event) {
         if (event.results.length > 0) {
             q.value = event.results[0][0].transcript;
-			document.getElementById("recbut").src="img/button.png";
+	    document.getElementById("recbut").src="img/button.png";
             $( "#txtpopup" ).popup( "open" )
         }
     }
@@ -36,6 +37,7 @@ function Registra() {
 	document.getElementById("recbut").src="img/button_load.gif";
 	recognition.start();
 }
+
 </script>
 <div data-role="page" data-theme="a">
 
@@ -43,17 +45,18 @@ function Registra() {
 	<div data-role="panel" id="menu" data-position="left" data-display="overlay" data-theme="a">
         <a href="#" data-rel="close" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
         <h3>Impostazioni</h3>
-        <p>This panel is positioned on the left with the reveal display mode. The panel markup is <em>after</em> the header, content and footer in the source order.</p>
-        <p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>
+        <p><a href="#" name="ita" value="it-IT" onClick="lang();">Italiano</a></p>
+        <p><a href="#" onClick="lang('en-US');">English</a></p>
         <a href="#txtpopup"  data-rel="popup" data-role="button" >Ultimo audio</a>
 	</div><!-- /leftpanel1 -->
 
 <div data-role="header">
-<a href="#menu" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-btn-b ui-icon-bars ui-btn-icon-notext">Menu</a>
+<a href="#menu" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-btn-b ui-icon-bars ui-btn-icon-notext" style="margin-top:20px;background:none;box-shadow: none;">Menu</a>
 </div><!--header-->
 
 <div data-role="content">
 <img id="recbut" src="img/button.png" onclick="Registra()" />
+<p align="center">Tocca per registrare</p>
 </div>
 
 
@@ -67,6 +70,17 @@ function Registra() {
 </div>
      
      
-
+<script type="text/javascript">
+function lang(language) {
+	switch (language) {
+		case "it-IT":
+		alert("Italiano selezionato");
+		break;
+		case "en-US":
+		alert("English selected");
+		break;
+	}
+}
+</script>
 </body>
 </html>
