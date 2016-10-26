@@ -1,9 +1,12 @@
 .ui-page {
 	background-image:url(../img/bg.png);
-    background-size:cover;
+        background-size:cover;
 	background-attachment: fixed;
 }
-.recbut {
+.ui-header {
+	background: none;
+}
+#recbut {
 	width: 70%;
 	display: block;
 	margin-top: 100px;
