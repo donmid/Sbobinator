@@ -21,6 +21,8 @@ var recognition;
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
+	            Appodeal.show(Appodeal.BANNER_BOTTOM);
+            Appodeal.show(Appodeal.SKIPPABLE_VIDEO);
     recognition = new SpeechRecognition();
 	recognition.lang = window.localStorage.getItem("deflang");
 	//recognition.lang = 'it-IT';
