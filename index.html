@@ -3,11 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<script>
-if (window.localStorage.getItem("deflang") === null) {
-    document.getElementById('homepage').style.display = 'none';
-}
-</script>
 <title>Audio To Text</title>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>  
 <link rel="stylesheet" href="themes/sbobinator.min.css" />
@@ -26,10 +21,10 @@ var recognition;
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-  setTimeout(
-    function() {
-      Appodeal.show(Appodeal.BANNER_BOTTOM);
-    }, 3000);
+	  setTimeout(
+        function() {
+          Appodeal.show(Appodeal.BANNER_BOTTOM);
+         }, 3000);
     recognition = new SpeechRecognition();
 	recognition.lang = window.localStorage.getItem("deflang");
 	//recognition.lang = 'it-IT';
@@ -49,14 +44,18 @@ function Registra() {
 }
 
 </script>
-<div data-role="page" data-theme="a">
 
+<div data-role="page" data-theme="a" id="home">
 <!-- leftpanel1  -->
 	<div data-role="panel" id="menu" data-position="left" data-display="overlay" data-theme="a">
         <a href="#" data-rel="close" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
         <h3>Impostazioni</h3>
-        <p><a href="#" onClick="deflang('it-IT');">Italiano</a></p>
-        <p><a href="#" onClick="deflang('en-US')">English</a></p>
+<ul data-role="listview" data-inset="true">
+    <li><a href="#" onclick="deflang('fr-FR')"><img src="img/Flags/France.png" alt="Français" class="ui-li-icon ui-corner-none">Français</a></li>
+    <li><a href="#" onclick="deflang('es-ES')"><img src="img/Flags/Spain.png" alt="Español" class="ui-li-icon">Español</a></li>
+    <li><a href="#" onclick="deflang('en-US')"><img src="img/Flags/Usa.png" alt="Great Britain" class="ui-li-icon">English (US)</a></li>
+    <li><a href="#" onclick="deflang('it-IT')"><img src="img/Flags/Italy.png" alt="Finland" class="ui-li-icon">Italiano</a></li>
+</ul>
         <a href="#txtpopup"  data-rel="popup" data-role="button" >Ultimo audio</a>
 	</div><!-- /leftpanel1 -->
 
@@ -68,28 +67,62 @@ function Registra() {
 <img id="recbut" src="img/button.png" alt="rec" onclick="Registra()" />
 <p align="center">Tocca per registrare</p>
 </div>
-
-
 		
 		<div data-role="popup" id="txtpopup" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
 			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
             <p>I have a close button at the top right corner with simple HTML markup.</p>
             <textarea id="q" name="q"></textarea>
 		</div><!--/popup-->
+</div>
+
+
+<div data-role="page" data-theme="a" id="preselect">
+
+<div data-role="content">
+<ul data-role="listview" data-inset="true">
+    <li><a href="#" onclick="deflang('fr-FR')"><img src="img/Flags/France.png" alt="Français" class="ui-li-icon ui-corner-none">Français</a></li>
+    <li><a href="#" onclick="deflang('es-ES')"><img src="img/Flags/Spain.png" alt="Español" class="ui-li-icon">Español</a></li>
+    <li><a href="#" onclick="deflang('en-US')"><img src="img/Flags/Usa.png" alt="Great Britain" class="ui-li-icon">English (US)</a></li>
+    <li><a href="#" onclick="deflang('it-IT')"><img src="img/Flags/Italy.png" alt="Finland" class="ui-li-icon">Italiano</a></li>
+</ul>
+</div>
 
 </div>
-     
-     
+<!--script-->
+<script>
+if (window.localStorage.getItem("deflang") === null) {
+	$(document).delegate("#home", "pageshow", function(event) {
+    setTimeout(function() {
+       if($.mobile.activePage.attr("id") == "home") {
+            $.mobile.changePage("#preselect", {
+                transition: "slide"
+            });
+        }
+    }, 10);});
+}
+</script>
 <script type="text/javascript">
 function deflang(language) {
 	switch (language) {
 		case "it-IT":
 		window.localStorage.removeItem("deflang");
 		window.localStorage.setItem("deflang", "it-IT");
+		location.reload(); 
 		break;
 		case "en-US":
 		window.localStorage.removeItem("deflang");
 		window.localStorage.setItem("deflang", "en-US");
+		location.reload(); 
+		break;
+		case "es-ES":
+		window.localStorage.removeItem("deflang");
+		window.localStorage.setItem("deflang", "es-ES");
+		location.reload(); 
+		break;
+		case "fr-FR":
+		window.localStorage.removeItem("deflang");
+		window.localStorage.setItem("deflang", "fr-FR");
+		location.reload(); 
 		break;
 	}
 }
