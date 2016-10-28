@@ -85,6 +85,7 @@ function Registra() {
     <li><a href="#" onclick="deflang('en-US')"><img src="img/Flags/Usa.png" alt="Great Britain" class="ui-li-icon">English (US)</a></li>
     <li><a href="#" onclick="deflang('it-IT')"><img src="img/Flags/Italy.png" alt="Finland" class="ui-li-icon">Italiano</a></li>
 </ul>
+<button onclick="alert(window.localStorage.getItem('deflang'))" value="check"></button>
 </div>
 
 </div>
@@ -108,7 +109,7 @@ function deflang(language) {
 		window.localStorage.setItem("deflang", "it-IT");
 		$.mobile.changePage("#home", {
                 transition: "slide"
-            });
+                });
 		break;
 		case "en-US":
 		window.localStorage.removeItem("deflang");
