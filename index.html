@@ -109,7 +109,7 @@ function deflang(language) {
 		window.localStorage.setItem("deflang", "it-IT");
 		$.mobile.changePage("#home", {
                 transition: "slide"
-                });
+            });
 		location.reload(); 	
 		break;
 		case "en-US":
@@ -117,18 +117,23 @@ function deflang(language) {
 		window.localStorage.setItem("deflang", "en-US");
 		$.mobile.changePage("#home", {
                 transition: "slide"
-                });
+            });
+		location.reload(); 
 		break;
 		case "es-ES":
 		window.localStorage.removeItem("deflang");
 		window.localStorage.setItem("deflang", "es-ES");
 		$.mobile.changePage("#home", {
                 transition: "slide"
-                });
+            });
+		location.reload(); 
 		break;
 		case "fr-FR":
 		window.localStorage.removeItem("deflang");
 		window.localStorage.setItem("deflang", "fr-FR");
+		$.mobile.changePage("#home", {
+                transition: "slide"
+            });
 		location.reload(); 
 		break;
 	}
