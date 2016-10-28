@@ -107,7 +107,6 @@ function deflang(language) {
 		case "it-IT":
 		window.localStorage.removeItem("deflang");
 		window.localStorage.setItem("deflang", "it-IT");
-		window.localStorage.getItem("deflang");
 		$.mobile.changePage("#home", {
                 transition: "slide"
                 });
@@ -115,12 +114,16 @@ function deflang(language) {
 		case "en-US":
 		window.localStorage.removeItem("deflang");
 		window.localStorage.setItem("deflang", "en-US");
-		location.reload(); 
+		$.mobile.changePage("#home", {
+                transition: "slide"
+                });
 		break;
 		case "es-ES":
 		window.localStorage.removeItem("deflang");
 		window.localStorage.setItem("deflang", "es-ES");
-		location.reload(); 
+		$.mobile.changePage("#home", {
+                transition: "slide"
+                });
 		break;
 		case "fr-FR":
 		window.localStorage.removeItem("deflang");
