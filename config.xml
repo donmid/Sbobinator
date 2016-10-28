@@ -40,7 +40,7 @@
 	<plugin name="cordova-plugin-media-capture" source="npm"/>
 	<plugin name="cordova-plugin-speech-recognition2" source="npm" />
 	<gap:plugin name="com.appodeal.plugin" source="npm" />
-	
+	<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" />
 
    <access origin="*"/>
     <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
