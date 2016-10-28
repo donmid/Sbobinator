@@ -26,6 +26,10 @@ var recognition;
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
+  setTimeout(
+    function() {
+      Appodeal.show(Appodeal.BANNER_BOTTOM);
+    }, 3000);
     recognition = new SpeechRecognition();
 	recognition.lang = window.localStorage.getItem("deflang");
 	//recognition.lang = 'it-IT';
