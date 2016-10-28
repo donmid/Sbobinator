@@ -90,11 +90,7 @@ function Registra() {
 
 </div>
 <!--script-->
-<script>
-document.addEventListener('deviceready', onDeviceReady, false);
-
-function onDeviceReady() {
-	
+<script type="text/javascript">	
 if (window.localStorage.getItem("deflang") === null) {
 	$(document).delegate("#home", "pageshow", function(event) {
     setTimeout(function() {
@@ -104,8 +100,6 @@ if (window.localStorage.getItem("deflang") === null) {
             });
         }
     }, 10);});
-}
-	
 }
 </script>
 <script type="text/javascript">
