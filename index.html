@@ -107,7 +107,9 @@ function deflang(language) {
 		case "it-IT":
 		window.localStorage.removeItem("deflang");
 		window.localStorage.setItem("deflang", "it-IT");
-		location.reload(); 
+		$.mobile.changePage("#home", {
+                transition: "slide"
+            });
 		break;
 		case "en-US":
 		window.localStorage.removeItem("deflang");
