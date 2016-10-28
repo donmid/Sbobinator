@@ -105,7 +105,6 @@ if (window.localStorage.getItem("deflang") === null) {
 function deflang(language) {
 	switch (language) {
 		case "it-IT":
-		window.localStorage.removeItem("deflang");
 		window.localStorage.setItem("deflang", "it-IT");
 		$.mobile.changePage("#home", {
                 transition: "slide"
