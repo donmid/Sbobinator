@@ -1,6 +1,13 @@
+@font-face {
+    font-family: "KaiRegular";
+    src: url("fonts/KaiRegular.otf") format("opentype");   
+    }
+body {
+    font-family: "KaiRegular";
+}
 .ui-page {
 	background-image:url(../img/bg.png);
-        background-size:cover;
+    background-size:cover;
 }
 .ui-header {
 	background: none;
@@ -11,4 +18,21 @@
 	margin-top: 100px;
 	margin-left: auto;
 	margin-right: auto;
+}
+.navImg   {
+	width: 80%;
+	display: block;
+	margin-top: 5px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 0;
+}
+.ui-icon-mysettings:after {
+	background-image: url("../img/icons/settings_icon.svg");
+	background-size: 18px 18px;
+}
+/* Fallback */
+.ui-nosvg .ui-icon-mysettings:after {
+	background-image: url("../img/icons/settings_icon.png");
+	background-size: 18px 18px;
 }
