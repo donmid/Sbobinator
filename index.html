@@ -40,27 +40,27 @@ function onDeviceReady() {
 function Registra() {
 	document.getElementById("recbut").src="img/button_load.gif";
 	recognition.start();
-	Appodeal.show(Appodeal.BANNER_BOTTOM);
 }
 
 </script>
 
 <div data-role="page" data-theme="a" id="home">
 <!-- leftpanel1  -->
-	<div data-role="panel" id="menu" data-position="left" data-display="overlay" data-theme="a">
-        <a href="#" data-rel="close" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-        <h3>Impostazioni</h3>
-        <a href="#" onClick="$.mobile.changePage("#preselect", {transition: "slide"});">Cambia lingua</a>
-        <a href="#txtpopup"  data-rel="popup" data-role="button" >Ultimo audio</a>
+	<div data-role="panel" id="menu" data-position="left" data-display="overlay" data-theme="a" class="ui-nodisc-icon ui-alt-icon">
+        <img src="img/logo.jpg" class="navImg"></img>
+        <a href="#" data-rel="close" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right" style="background:none;box-shadow: none;border:none;">Close</a>
+        <h3 id="lngoptions"></h3>
+        <a class="ui-btn ui-shadow ui-corner-all ui-icon-mysettings ui-btn-icon-notext ui-btn-inline" style="background:none;box-shadow: none;border:none;"></a> <a href="#" id="lnglang" onClick="$.mobile.changePage('#preselect', {transition: 'slide'});"></a> <br/>
+        <a class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-b ui-btn-inline" style="background:none;box-shadow: none;border:none;"></a> <a href="#txtpopup" data-rel="popup" id="lngaudio" onclick="Appodeal.show(Appodeal.INTERSTITIAL | Appodeal.SKIPPABLE_VIDEO)"></a>
 	</div><!-- /leftpanel1 -->
 
 <div data-role="header">
-<a href="#menu" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-btn-b ui-icon-bars ui-btn-icon-notext" style="margin-top:20px;background:none;box-shadow: none;">Menu</a>
+<a href="#menu" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-btn-b ui-icon-bars ui-btn-icon-notext" style="margin-top:20px;background:none;box-shadow:none;border:none;">Menu</a>
 </div><!--header-->
 
 <div data-role="content">
 <img id="recbut" src="img/button.png" alt="rec" onclick="Registra()" />
-<p align="center">Tocca per registrare</p>
+<p align="center" id="lngtouch"></p>
 </div>
 		
 		<div data-role="popup" id="txtpopup" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
@@ -133,6 +133,13 @@ function deflang(language) {
 		break;
 	}
 }
+</script>
+<script>
+   var head= document.getElementsByTagName('head')[0];
+   var script= document.createElement('script');
+   script.type= 'text/javascript';
+   script.src= 'js/' + window.localStorage.getItem("deflang") + '.js';
+   head.appendChild(script);
 </script>
 </body>
 </html>
