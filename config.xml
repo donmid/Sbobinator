@@ -39,9 +39,9 @@
 	<plugin name="cordova-plugin-splashscreen" source="npm"/>
 	<plugin name="cordova-plugin-media-capture" source="npm"/>
 	<plugin name="cordova-plugin-speech-recognition2" source="npm" />
-	<!--<plugin name="cordova-plugin-email-composer" version="0.8.3" source="npm" />-->
+	<plugin name="cordova-plugin-email-composer" version="0.8.3" source="npm" />
 	<!--<gap:plugin name="com.appodeal.plugin" source="npm" />--> <!--android-->
-	<!--<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" source="git"/>--> <!--iOS-->
+	<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" source="git"/> <!--iOS-->
 
    <access origin="*"/>
     <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
