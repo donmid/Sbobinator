@@ -31,15 +31,23 @@ function onDeviceReady() {
     recognition.onresult = function(event) {
         if (event.results.length > 0) {
             q.value = event.results[0][0].transcript;
-			document.getElementById("recbut").src="img/button.png";
+			document.getElementById("recbut").src="img/rec_off.png";
+			document.getElementById("lngtouch").innerHTML = postgrec;
             $( "#txtpopup" ).popup( "open" )
         }
     }
 }
 
 function Registra() {
-	document.getElementById("recbut").src="img/button_load.gif";
+	document.getElementById("recbut").src="img/rec_on.gif";
+	document.getElementById("lngtouch").innerHTML = duringrec;
 	recognition.start();
+}
+
+function sendMail() {
+	cordova.plugins.email.open({
+    body: q
+    });
 }
 
 </script>
@@ -47,9 +55,9 @@ function Registra() {
 <div data-role="page" data-theme="a" id="home">
 <!-- leftpanel1  -->
 	<div data-role="panel" id="menu" data-position="left" data-display="overlay" data-theme="a" class="ui-nodisc-icon ui-alt-icon">
-        <img src="img/logo.jpg" class="navImg"></img>
+        <img class="navImg" src="img/logo.jpg"></img>
         <a href="#" data-rel="close" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right" style="background:none;box-shadow: none;border:none;">Close</a>
-        <h3 id="lngoptions"></h3>
+        <h3 id="lngoptions" align="center"></h3>
         <a class="ui-btn ui-shadow ui-corner-all ui-icon-mysettings ui-btn-icon-notext ui-btn-inline" style="background:none;box-shadow: none;border:none;"></a> <a href="#" id="lnglang" onClick="$.mobile.changePage('#preselect', {transition: 'slide'});"></a> <br/>
         <a class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-b ui-btn-inline" style="background:none;box-shadow: none;border:none;"></a> <a href="#txtpopup" data-rel="popup" id="lngaudio" onclick="Appodeal.show(Appodeal.INTERSTITIAL | Appodeal.SKIPPABLE_VIDEO)"></a>
 	</div><!-- /leftpanel1 -->
@@ -59,14 +67,14 @@ function Registra() {
 </div><!--header-->
 
 <div data-role="content">
-<img id="recbut" src="img/button.png" alt="rec" onclick="Registra()" />
+<img id="recbut" src="img/rec_off.png" alt="rec" onclick="Registra()" />
 <p align="center" id="lngtouch"></p>
 </div>
 		
 		<div data-role="popup" id="txtpopup" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
-			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-            <p>I have a close button at the top right corner with simple HTML markup.</p>
+			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right ui-alt-icon">Close</a>
             <textarea id="q" name="q"></textarea>
+            <a class="button" onClick="sendMail()">Email</a>
 		</div><!--/popup-->
 </div>
 
