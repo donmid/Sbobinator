@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Audio To Text</title>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>  
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+app.initialize();
+</script>
 <link rel="stylesheet" href="themes/sbobinator.min.css" />
 <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 <link rel="stylesheet" href="jquery-mobile/jquery.mobile.structure-1.4.5.min.css" />
@@ -44,17 +48,15 @@ function Registra() {
 	recognition.start();
 }
 
-function sendMail() {
+sendMail = function () {
 	cordova.plugins.email.open({
-    body: q
+    to:      'max@mustermann.de',
+    cc:      'erika@mustermann.de',
+    bcc:     ['john@doe.com', 'jane@doe.com'],
+    subject: 'Greetings',
+    body:    q
     });
-}
-	
-	cordova.plugins.email.isAvailable(
-    urischeme, function (isAvailable, withScheme) {
-        alert('Service is not available'); 
-    }
-);
+ };
 
 </script>
 
