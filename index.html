@@ -49,6 +49,12 @@ function sendMail() {
     body: q
     });
 }
+	
+	cordova.plugins.email.isAvailable(
+    urischeme, function (isAvailable, withScheme) {
+        alert('Service is not available'); 
+    }
+);
 
 </script>
 
