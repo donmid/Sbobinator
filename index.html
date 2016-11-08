@@ -38,28 +38,27 @@ function onDeviceReady() {
     }
 }
 
+app.initialize(); //under this
+var args = {};
+	
 function Registra() {
 	document.getElementById("recbut").src="img/rec_on.gif";
 	document.getElementById("lngtouch").innerHTML = duringrec;
 	recognition.start();
 }
 
-sendMail = function () {
-	cordova.plugins.email.open({
-    to:      'max@mustermann.de',
-    cc:      'erika@mustermann.de',
-    bcc:     ['john@doe.com', 'jane@doe.com'],
-    subject: 'Greetings',
-    body:    q
-    });
- };
+    function sendEmail(){
+         window.plugins.emailComposer.showEmailComposer("subject","body", "recipient@something.com", "cc@something.com", "bcc@something.com",false); 
+    }
+	
+
 
 </script>
 
 <div data-role="page" data-theme="a" id="home">
 <!-- leftpanel1  -->
 	<div data-role="panel" id="menu" data-position="left" data-display="overlay" data-theme="a" class="ui-nodisc-icon ui-alt-icon">
-        <img class="navImg" src="img/logo.jpg"></img>
+	<img src="img/logo.jpg" class="navImg" ></img>
         <a href="#" data-rel="close" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right" style="background:none;box-shadow: none;border:none;">Close</a>
         <h3 id="lngoptions" align="center"></h3>
         <a class="ui-btn ui-shadow ui-corner-all ui-icon-mysettings ui-btn-icon-notext ui-btn-inline" style="background:none;box-shadow: none;border:none;"></a> <a href="#" id="lnglang" onClick="$.mobile.changePage('#preselect', {transition: 'slide'});"></a> <br/>
@@ -78,7 +77,7 @@ sendMail = function () {
 		<div data-role="popup" id="txtpopup" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
 			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right ui-alt-icon">Close</a>
             <textarea id="q" name="q"></textarea>
-            <a class="button" onClick="sendMail()">Email</a>
+            <a class="button" onClick="sendMail(); return false;">Email</a>
 		</div><!--/popup-->
 </div>
 
