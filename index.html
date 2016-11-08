@@ -33,6 +33,8 @@ function onDeviceReady() {
             q.value = event.results[0][0].transcript;
 			document.getElementById("recbut").src="img/rec_off.png";
 			document.getElementById("lngtouch").innerHTML = postrec;
+			var email = 'mailto:?cc=&bcc=&subject=&body=' + q;
+			document.getElementById("email").setAttribute("href",email);
             $( "#txtpopup" ).popup( "open" )
         }
     }
@@ -67,7 +69,7 @@ function Registra() {
 		<div data-role="popup" id="txtpopup" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
 			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right ui-alt-icon">Close</a>
             <textarea id="q" name="q"></textarea>
-            <a data-role="button" href="mailto:someone@yoursite.com?cc=someoneelse@theirsite.com, another@thatsite.com, me@mysite.com&bcc=lastperson@theirsite.com&subject=Big%20News&body=Body-goes-here">Email</a>
+            <a data-role="button" id="email">Email</a>
 		</div><!--/popup-->
 </div>
 
