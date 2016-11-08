@@ -40,7 +40,7 @@
 	<plugin name="cordova-plugin-media-capture" source="npm"/>
 	<plugin name="cordova-plugin-speech-recognition2" source="npm" />
 	<plugin name="com.verso.cordova.clipboard" spec="0.1.0" source="pgb" />
-	<gap:plugin name="com.appodeal.plugin" source="npm" /> <!--android-->
+	<plugin name="com.appodeal.plugin" source="npm" /> <!--android-->
 	<!--<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" source="git"/>--> <!--iOS-->
 
    <access origin="*"/>
