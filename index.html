@@ -67,7 +67,7 @@ function Registra() {
 		<div data-role="popup" id="txtpopup" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
 			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right ui-alt-icon">Close</a>
             <textarea id="q" name="q"></textarea>
-            <a class="button" onclick="sendMail()">Email</a>
+            <a class="button" onclick="mailto:&body=Body-goes-here">Email</a>
 		</div><!--/popup-->
 </div>
 
@@ -143,15 +143,6 @@ function deflang(language) {
    head.appendChild(script);
 </script>
 	
-<script type="text/javascript" src="js/email_composer.js"></script>	
 
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-	<script>
-function sendMail() {
-	   window.plugins.emailComposer.showEmailComposerWithCallback(callback,subject,body,toRecipients,ccRecipients,bccRecipients,isHtml,attachments,attachmentsData);
-}
-	</script>
 </body>
 </html>
