@@ -39,7 +39,7 @@
 	<plugin name="cordova-plugin-splashscreen" source="npm"/>
 	<plugin name="cordova-plugin-media-capture" source="npm"/>
 	<plugin name="cordova-plugin-speech-recognition2" source="npm" />
-	<gap:plugin name="cordova-plugin-email-composer" version="0.8.3" source="npm" />
+	<plugin spec="https://github.com/katzer/cordova-plugin-email-composer.git#0.8.2" source="git"/>
 	<gap:plugin name="com.appodeal.plugin" source="npm" /> <!--android-->
 	<!--<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" source="git"/>--> <!--iOS-->
 
