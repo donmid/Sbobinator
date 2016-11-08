@@ -41,8 +41,8 @@
 	<plugin name="cordova-plugin-speech-recognition2" source="npm" />
 	<plugin spec="https://github.com/katzer/cordova-plugin-email-composer.git#0.8.2" sourge="git"/>
 	<!--<plugin name="cordova-plugin-email-composer" version="0.8.3" source="npm" />-->
-	<!--<gap:plugin name="com.appodeal.plugin" source="npm" />--> <!--android-->
-	<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" source="git"/> <!--iOS-->
+	<gap:plugin name="com.appodeal.plugin" source="npm" /> <!--android-->
+	<!--<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" source="git"/>--> <!--iOS-->
 
    <access origin="*"/>
     <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
