@@ -37,28 +37,12 @@ function onDeviceReady() {
         }
     }
 }
-
-app.initialize(); //under this
-var args = {};
 	
 function Registra() {
 	document.getElementById("recbut").src="img/rec_on.gif";
 	document.getElementById("lngtouch").innerHTML = duringrec;
 	recognition.start();
 }
-
-function sendEmail(){
-    window.plugin.email.open({
-    to:      ['max.mustermann@appplant.de'],
-    cc:      ['erika.mustermann@appplant.de'],
-    bcc:     ['john.doe@appplant.com', 'jane.doe@appplant.com'],
-    subject: 'Greetings',
-    body:    'How are you? Nice greetings from Leipzig'
-}); 
-}
-	
-
-
 </script>
 
 <div data-role="page" data-theme="a" id="home">
@@ -83,7 +67,7 @@ function sendEmail(){
 		<div data-role="popup" id="txtpopup" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
 			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right ui-alt-icon">Close</a>
             <textarea id="q" name="q"></textarea>
-            <a class="button" onClick="sendMail(); return false;">Email</a>
+            <a class="button" onclick="openDraft()">Email</a>
 		</div><!--/popup-->
 </div>
 
@@ -158,5 +142,111 @@ function deflang(language) {
    script.src= 'js/' + window.localStorage.getItem("deflang") + '.js';
    head.appendChild(script);
 </script>
+	
+<script type="text/javascript" src="js/index.js"></script>
+
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+	<script>
+		openDraft = function (isHtml) {
+
+                if (isHtml && ['Win32NT', 'windows'].indexOf(device.platform) > -1) {
+                    alert('Not supported on that platform!');
+                    return;
+                }
+
+                cordova.plugins.email.open({
+                    to: 'to@email.de',
+                    cc: ['cc1@email.de', 'cc2@email.de'],
+                    bcc: ['bcc1@email.de', 'bcc2@email.de'],
+                    subject: isHtml ? 'Body with HTML and CSS3' : 'Body with plain text',
+                    body: getBody(isHtml),
+                    isHTML: isHtml
+                }, showToast);
+            };
+	
+	getBody = function (isHtml) {
+                var css = [
+                    '<style>',
+                        '.ribbon p {',
+                            'color: white;',
+                            'font-family: Helvetica;',
+                            'font-size: 17px;',
+                            'font-weight: bold;',
+                            'line-height: 60px;',
+                            'text-align: center;',
+                            'text-shadow: 0 2px 0 #83ac17;',
+                            'width: 100%;',
+                        '}',
+                        '#ribbon {',
+                            'top: 15px;',
+                            'position: relative;',
+                            'display: block;',
+                            'margin: 0 auto;',
+                            'height: 60px;',
+                            'width: 250px;',
+                            'background-color: #a5cc39;',
+                        '}',
+                        '.ribbon:before, .ribbon:after {',
+                            'content: " ";',
+                            'height: 0px;',
+                            'position: absolute;',
+                            'top:10px;',
+                            'z-index: -1;',
+                            'border-bottom: 30px solid #94bd28;',
+                            'border-top: 30px solid #94bd28;',
+                        '}',
+                        '.ribbon:before {',
+                            'border-left: 15px solid transparent;',
+                            'border-right: 15px solid #94bd28;',
+                            'left:-20px;',
+                        '}',
+                        '.ribbon:after {',
+                            'border-left: 15px solid #94bd28;',
+                            'border-right: 15px solid transparent;',
+                            'right: -20px;',
+                        '}',
+                        '.sub-curls {',
+                            'position: absolute;',
+                            'bottom: -15px;',
+                            'height: 15px;',
+                            'width: 100%;',
+                        '}',
+                        '.sub-curls:before {',
+                            'content: " ";',
+                            'position: absolute;',
+                            'left: 0;',
+                            'border-left: 10px solid transparent;',
+                            'border-top: 10px solid #729b06;',
+                        '}',
+                        '.sub-curls:after {',
+                            'content: " ";',
+                            'position: absolute;',
+                            'right: 0;',
+                            'border-right: 10px solid transparent;',
+                            'border-top: 10px solid #729b06;',
+                        '}',
+                    '</style>'
+                ];
+
+                var html = [
+                    '<div id="ribbon" class="ribbon">',
+                        '<p><b>Simple Ribbon with CSS3</b></p>',
+                        '<div class="sub-curls"></div>',
+                    '</div>'
+                ];
+
+                if (!isHtml) {
+                    return "\nHello,\n\nthis is just a plain text email body!";
+                }
+
+                if (device.platform != 'iOS') {
+                    css = [];
+                }
+
+                return css.concat(html);
+            };
+	</script>
 </body>
 </html>
