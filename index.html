@@ -52,7 +52,7 @@ function copy() {
 	window.plugins.paste(function (rec) { alert(rec); });
 }
 	
-$("#q").keyup(function(){
+$("#q").change(function(){
       rec = $('#q').val();
       email = 'mailto:?cc=&bcc=&subject=&body=' + rec;
       $('#email').attr("href",email);	
