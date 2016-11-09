@@ -56,6 +56,8 @@ $("#q").keyup(function(){
       rec = $('#q').val();
       email = 'mailto:?cc=&bcc=&subject=&body=' + rec;
       $('#email').attr("href",email);	
+      	alert(email);
+	alert(document.getElementById("email").value);
 });
 </script>
 
