@@ -1,203 +1,185 @@
-<!DOCTYPE html> 
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Applicazione Web jQuery Mobile</title>
-<meta name="viewport" content="width=device-width; inizial-scale=1.0" >
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" charset="utf-8" src="cordova.js"></script>    
-<link href="jquery-mobile/jquery.mobile.theme-1.4.5.min.css" rel="stylesheet" type="text/css"/>
-<link href="jquery-mobile/jquery.mobile.structure-1.4.5.min.css" rel="stylesheet" type="text/css"/>
-<link href="themes/jquery.mobile.icons.min.css" rel="stylesheet" type="text/css"/>
-<link href="style.css" rel="stylesheet" type="text/css">
-<script src="jquery-mobile/jquery-1.8.3.min.js" type="text/javascript"></script>
-<script src="jquery-mobile/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="swiper.min.css"/>
-	<script src="js/load-json.js"></script>
-    <script src="js/swiper.min.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Audio 2 Text</title>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>  
+<link rel="stylesheet" href="themes/sbobinator.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="jquery-mobile/jquery.mobile.structure-1.4.5.min.css" />
+<link rel="stylesheet" href="themes/style.css" />
+<script src="jquery-mobile/jquery-1.11.1.min.js"></script>
+<script src="jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+</head>
 
-<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/aclonica:n4:default.js" type="text/javascript"></script>
+<body>
+<script src="js/appodeal.js"></script> 
+<script>
+		function checkConnection() {
+    var networkState = navigator.connection.type;
 
-<style>
-.wrap {
-    white-space: normal !important;
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    alert('Connection type: ' + states[networkState]);
 }
- </style>
-<style>
-    .swiper-container {
-        width: 100%;
-        height: 100%;
-        
-    }
-    .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-    }
-</style>
 
-</head> 
-<body> 
 
-<div data-role="page" id="home">
-	<div data-role="header" id="header">
-    
-		<h1><img src="images/app/sisa_logo_nav.png" id="navImg"/></h1>
-		<a href="#info" data-role="button" data-icon="info" data-iconpos="notext" class="ui-btn-right" data-rel="dialog" data-transition="pop">Info Autore</a>
-	</div>
+
+</script>
 	
+<script type="text/javascript">
+var recognition;
+var rec;
+var email;
+	
+document.addEventListener('deviceready', onDeviceReady, false);
 
-<div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
-			<div data-role="header" data-theme="a" class="ui-corner-top">
-				<h1>Non sei connesso</h1>
-			</div>
-			<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-				<h3 class="ui-title">E' richiesta una connessione internet per utilizzare l'app.</h3>
-				<p>Abilita una connessione dati o wifi e riavvia l'applicazione.</p>
-				<a href="#" onClick="location.href='index.html'" data-role="button" data-inline="true" data-theme="c">Ok</a>     
-			</div>
-		</div>
-    
-   
-   
-<!-- Swiper -->
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <!--<div class="swiper-slide"><img src="http://gestisciapp.it/gruppodipalo/images/4image.png" style="width:100%;"></img></div>
-            <div class="swiper-slide">Slide 2</div>
-            <div class="swiper-slide">Slide 3</div>-->
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-        <!-- Add Arrows -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-    </div>
+function onDeviceReady() {
+	  setTimeout(
+        function() {
+          Appodeal.show(Appodeal.BANNER_BOTTOM);
+         }, 3000);
+    recognition = new SpeechRecognition();
+	recognition.lang = window.localStorage.getItem("deflang");
+    recognition.onresult = function(event) {
+        if (event.results.length > 0) {
+			rec = event.results[0][0].transcript;
+                        q.value = rec;
+			document.getElementById("recbut").src="img/rec_off.png";
+			document.getElementById("lngtouch").innerHTML = postrec;
+			email = 'mailto:?cc=&bcc=&subject=&body=' + rec;
+			document.getElementById("email").setAttribute("href",email);
+            $( "#txtpopup" ).popup( "open" )
+        }
+    }
+}
+	
+function Registra() {
+	checkConnection();
+	document.getElementById("recbut").src="img/rec_on.gif";
+	document.getElementById("lngtouch").innerHTML = duringrec;
+	recognition.start();
+}
 
+function copy() {
+	window.plugins.copy(document.getElementById("q").value);
+	//window.plugins.paste(function (rec) { alert(rec); });
+}
+	
+$("#q").keyup(function(){
+      rec = $('#q').val();
+      email = 'mailto:?cc=&bcc=&subject=&body=' + rec;
+      $('email').attr("href",email);	
+});
+</script>
 
-   
-   
-  <div data-role="main" class="ui-content">
-    
-    <div class="ui-grid-c">
-      <div class="ui-block-a">
-        <a href="#" onClick="location.href='volantino.html'" class="ui-btn ui-corner-all ui-shadow"><img src="images/app/volantino.png" width="100%"/></a><br>
-        <span>Volantini</span>
-      </div>
-      <div class="ui-block-b">
-        <a href="#prodotti" class="ui-btn ui-corner-all ui-shadow"><img src="images/app/prodotti.png" width="100%"/></a><br>
-        <span>Offerte</span>
-      </div>
-      <div class="ui-block-c">
-        <a href="#dovesiamo" class="ui-btn ui-corner-all ui-shadow"><img src="images/app/geo.png" width="100%"/></a><br>
-        <span>Dove Siamo</span>
-      </div>
-      <div class="ui-block-d">
-        <a href="#" onClick="location.href='azienda.html'" class="ui-btn ui-corner-all ui-shadow"><img src="images/app/about.png" width="100%"/></a><br>
-        <span>Azienda</span>
-      </div>
-    </div>
-  </div>
- 
+<div data-role="page" data-theme="a" id="home">
+<!-- leftpanel1  -->
+	<div data-role="panel" id="menu" data-position="left" data-display="overlay" data-theme="a" class="ui-nodisc-icon ui-alt-icon">
+	<img src="img/logo.jpg" class="navImg" ></img>
+        <a href="#" data-rel="close" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right" style="background:none;box-shadow: none;border:none;">Close</a>
+        <h3 id="lngoptions" align="center"></h3>
+        <a class="ui-btn ui-shadow ui-corner-all ui-icon-mysettings ui-btn-icon-notext ui-btn-inline" style="background:none;box-shadow: none;border:none;"></a> <a href="#" id="lnglang" onClick="$.mobile.changePage('#preselect', {transition: 'slide'});"></a> <br/>
+        <a class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-b ui-btn-inline" style="background:none;box-shadow: none;border:none;"></a> <a href="#txtpopup" data-rel="popup" id="lngaudio" onclick="Appodeal.show(Appodeal.INTERSTITIAL | Appodeal.SKIPPABLE_VIDEO | Appodeal.REWARDED_VIDEO | Appodeal.NON_SKIPPABLE_VIDEO)"></a>
+	</div><!-- /leftpanel1 -->
 
+<div data-role="header">
+<a href="#menu" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-btn-b ui-icon-bars ui-btn-icon-notext" style="margin-top:20px;background:none;box-shadow:none;border:none;">Menu</a>
+</div><!--header-->
+
+<div data-role="content">
+<img id="recbut" src="img/rec_off.png" alt="rec" onclick="Registra()" />
+<p align="center" id="lngtouch"></p>
+</div>
+		
+		<div data-role="popup" id="txtpopup" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
+			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right ui-alt-icon">Close</a>
+            <textarea id="q" name="q"></textarea>
+            <a data-role="button" id="email" href="#">Email</a> <a data-role="button" onClick="copy()">Copy</a>
+		</div><!--/popup-->
 </div>
 
 
-<div data-role="page" id="dovesiamo">
-	<div data-role="header"><a href="#" onClick="location.href='index.html'" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
-		<h1><img src="images/app/sisa_logo_nav.png" id="navImg"/></h1>
-        <a href="#info" data-role="button" data-icon="info" data-iconpos="notext" class="ui-btn-right" data-rel="dialog" data-transition="pop">Info Autore</a>
-	</div>
-	<div data-role="content">
-	  <h2> Come Raggiungerci </h2>
-      
-<p>Seleziona un punto vendita:</p>
-   <ul data-role="listview">
-  <li>
-    <a href="#" onClick="location.href='puntovendita1.html'" >
-    <img src="images/app/conad.jpg">
-    <h2>Portici</h2>
-    <p class="wrap">Corso Garibaldi, 185</p>
-    </a>
-  </li>
-  <li>
-    <a href="#" onClick="location.href='puntovendita2.html'">
-    <img src="images/app/conadcity.jpg">
-    <h2>Portici</h2>
-    <p class="wrap">Viale Bernini 11/13</p>
-    </a>
-  </li>
-  <li>
-    <a href="#" onClick="location.href='puntovendita3.html'">
-    <img src="images/app/conad.jpg">
-    <h2>Portici</h2>
-    <p class="wrap">Piazza Gravina 13/14 - 16/17</p>
-    </a>
-  </li>
-  <li>
-     <a href="#" onClick="location.href='puntovendita5.html'">
-    <img src="images/app/conad.jpg">
-    <h2>Ercolano</h2>
-    <p class="wrap">Via Madonnelle,75</p>
-    </a>
-  </li>
-  <li>
-     <a href="#" onClick="location.href='puntovendita4.html'">
-    <img src="images/app/todis.jpg">
-    <h2>Ercolano</h2>
-    <p class="wrap">Via Benedetto Cozzolino, 10</p>
-    </a>
-  </li>
-</ul> 
-   </div>
+<div data-role="page" data-theme="a" id="preselect">
 
+<div data-role="content">
+<ul data-role="listview" data-inset="true">
+    <li><a href="#" onclick="deflang('fr-FR')"><img src="img/Flags/France.png" alt="Français" class="ui-li-icon ui-corner-none">Français</a></li>
+    <li><a href="#" onclick="deflang('es-ES')"><img src="img/Flags/Spain.png" alt="Español" class="ui-li-icon">Español</a></li>
+    <li><a href="#" onclick="deflang('en-US')"><img src="img/Flags/Usa.png" alt="Great Britain" class="ui-li-icon">English (US)</a></li>
+    <li><a href="#" onclick="deflang('it-IT')"><img src="img/Flags/Italy.png" alt="Finland" class="ui-li-icon">Italiano</a></li>
+</ul>
 </div>
 
-<div data-role="page" id="prodotti">
-	<div data-role="header"><a href="#" onClick="location.href='index.html'" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
-		<h1><img src="images/app/sisa_logo_nav.png" id="navImg"/></h1>
-        <a href="#info" data-role="button" data-icon="info" data-iconpos="notext" class="ui-btn-right" data-rel="dialog" data-transition="pop">Info Autore</a>
-	</div>
-	<div data-role="content">
-	  <h2> Prodotti in offerta </h2>
-      
-  <div data-role="collapsible">
-  <h1>Seleziona un punto vendita:</h1>
-  <ul data-role="listview" data-inset="true">
-  <li><a href="#" onClick="location.href='prodotti1.html'">Tutti</a></li>
-  <li><a href="#" onClick="location.href='prodotti2.html'">Corso Garibaldi, 185</a></li>
-  <li><a href="#" onClick="location.href='prodotti3.html'">Viale Bernini 11/13</a></li>
-  <li><a href="#" onClick="location.href='prodotti4.html'">Piazza Gravina 13/14 - 16/17</a></li>
-  <li><a href="#" onClick="location.href='prodotti6.html'">Via Madonnelle,75</a></li>
-  <li><a href="#" onClick="location.href='prodotti5.html'">Via Benedetto Cozzolino, 10</a></li>
-  </ul>
-  </div>
-   </div>
-
 </div>
-
-<div data-role="page" id="info">
-  <div data-role="header">
-    <h1>Crediti</h1>
-  </div>
-  <div data-role="content"><center>Distributore: InformaticaTeam<br>Sviluppatore: Stefano Iodice</center></div>
-</div>
-
-
+<!--script-->
+<script type="text/javascript">	
+if (window.localStorage.getItem("deflang") === null) {
+	$(document).delegate("#home", "pageshow", function(event) {
+    setTimeout(function() {
+       if($.mobile.activePage.attr("id") == "home") {
+            $.mobile.changePage("#preselect", {
+                transition: "slide"
+            });
+        }
+    }, 10);});
+}
+</script>
+<script type="text/javascript">
+function deflang(language) {
+	switch (language) {
+		case "it-IT":
+		window.localStorage.removeItem("deflang");
+		window.localStorage.setItem("deflang", "it-IT");
+		$.mobile.changePage("#home", {
+                transition: "slide"
+            });
+		location.reload(); 	
+		break;
+		case "en-US":
+		window.localStorage.removeItem("deflang");
+		window.localStorage.setItem("deflang", "en-US");
+		$.mobile.changePage("#home", {
+                transition: "slide"
+            });
+		location.reload(); 
+		break;
+		case "es-ES":
+		window.localStorage.removeItem("deflang");
+		window.localStorage.setItem("deflang", "es-ES");
+		$.mobile.changePage("#home", {
+                transition: "slide"
+            });
+		location.reload(); 
+		break;
+		case "fr-FR":
+		window.localStorage.removeItem("deflang");
+		window.localStorage.setItem("deflang", "fr-FR");
+		$.mobile.changePage("#home", {
+                transition: "slide"
+            });
+		location.reload(); 
+		break;
+	}
+}
+</script>
+<script>
+   var head= document.getElementsByTagName('head')[0];
+   var script= document.createElement('script');
+   script.type= 'text/javascript';
+   script.src= 'js/' + window.localStorage.getItem("deflang") + '.js';
+   head.appendChild(script);
+</script>
+	
 
 </body>
 </html>
