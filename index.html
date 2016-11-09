@@ -51,7 +51,16 @@ function Registra() {
 
 function copy() {
 	cordova.plugins.clipboard.copy(document.getElementById("q").value);
-	cordova.plugins.clipboard.paste(function (rec) { alert(document.getElementById("q").value); });
+	cordova.plugins.clipboard.paste(function (rec) { 
+		navigator.notification.alert(
+                'Copied!',  // message
+                alertDismissed,         // callback
+                'Copied_titolo',            // title
+                'Ok'                  // buttonName
+);
+
+	
+	});
 }
 	
 $("#q").keyup(function(){
