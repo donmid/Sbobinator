@@ -35,7 +35,7 @@ var email;
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-checkConnection();	
+
 	  setTimeout(
         function() {
           Appodeal.show(Appodeal.BANNER_BOTTOM);
@@ -56,6 +56,7 @@ checkConnection();
 }
 	
 function Registra() {
+	checkConnection();	
 	document.getElementById("recbut").src="img/rec_on.gif";
 	document.getElementById("lngtouch").innerHTML = duringrec;
 	recognition.start();
