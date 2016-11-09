@@ -19,6 +19,8 @@
 <script type="text/javascript">
 var recognition;
 var rec;
+var email;
+	
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
@@ -31,11 +33,11 @@ function onDeviceReady() {
 	//recognition.lang = 'it-IT';
     recognition.onresult = function(event) {
         if (event.results.length > 0) {
-			var rec = event.results[0][0].transcript;
-            q.value = rec;
+			rec = event.results[0][0].transcript;
+                        q.value = rec;
 			document.getElementById("recbut").src="img/rec_off.png";
 			document.getElementById("lngtouch").innerHTML = postrec;
-			var email = 'mailto:?cc=&bcc=&subject=&body=' + rec;
+			email = 'mailto:?cc=&bcc=&subject=&body=' + rec;
 			document.getElementById("email").setAttribute("href",email);
             $( "#txtpopup" ).popup( "open" )
         }
@@ -55,6 +57,8 @@ function copy() {
 	
 $("#q").keyup(function(){
       rec = $('#q').val();
+      email = 'mailto:?cc=&bcc=&subject=&body=' + rec;
+      document.getElementById("email").setAttribute("href",email);	
 });
 </script>
 
