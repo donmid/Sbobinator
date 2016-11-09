@@ -15,7 +15,6 @@
 
 <body>
 <script src="js/appodeal.js"></script> 
-
 	
 <script type="text/javascript">
 var recognition;
@@ -171,6 +170,11 @@ function deflang(language) {
    head.appendChild(script);
 </script>
 	
-
+<script>
+document.addEventListener("offline", onOffline, false);
+function onOffline() {
+    $( "#offlinepop" ).popup( "open" )
+}
+</script>
 </body>
 </html>
