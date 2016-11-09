@@ -15,6 +15,19 @@
 
 <body>
 <script src="js/appodeal.js"></script> 
+<script type="text/javascript">
+function checkConnection() {
+    var networkState = navigator.connection.type;
+
+    var states = {};
+    states[Connection.NONE]     = 'No network connection';
+
+    alert('Connection type: ' + states[networkState]);
+}
+
+checkConnection();
+
+</script>
 	
 <script type="text/javascript">
 var recognition;
@@ -51,16 +64,12 @@ function Registra() {
 
 function copy() {
 	cordova.plugins.clipboard.copy(document.getElementById("q").value);
-	cordova.plugins.clipboard.paste(function (rec) { 
 		navigator.notification.alert(
                 'Copied!',  // message
                 alertDismissed,         // callback
                 'Copied_titolo',            // title
                 'Ok'                  // buttonName
-);
-
-	
-	});
+                );
 }
 	
 $("#q").keyup(function(){
