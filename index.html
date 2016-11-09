@@ -49,7 +49,7 @@ function Registra() {
 }
 function copy() {
 	window.plugins.copy(document.getElementById("q").value);
-	window.plugins.paste(function (clipboard) { alert(clipboard); });
+	window.plugins.paste(function (rec) { alert(rec); });
 }
 	
 $("#q").keyup(function(){
