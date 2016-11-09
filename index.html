@@ -50,8 +50,8 @@ function Registra() {
 }
 
 function copy() {
-	cordova.plugins.clipboard.copy(rec);
-	cordova.plugins.clipboard.paste(function (rec) { alert(rec); });
+	cordova.plugins.clipboard.copy(document.getElementById("q").value);
+	cordova.plugins.clipboard.paste(function (rec) { alert(document.getElementById("q").value); });
 }
 	
 $("#q").keyup(function(){
