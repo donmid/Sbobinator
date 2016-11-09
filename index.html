@@ -48,8 +48,8 @@ function Registra() {
 	recognition.start();
 }
 function copy() {
-	window.plugins.copy(document.getElementById("q").value);
-	window.plugins.paste(function (rec) { alert(document.getElementById("q").value); });
+	cordova.plugins.clipboard.copy(document.getElementById("q").value);
+	//cordova.plugins.clipboard.paste(function (text) { alert(text); });
 }
 	
 $("#q").change(function(){
