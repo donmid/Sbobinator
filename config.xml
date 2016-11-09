@@ -39,7 +39,7 @@
 	<plugin name="cordova-plugin-splashscreen" source="npm"/>
 	<plugin name="cordova-plugin-media-capture" source="npm"/>
 	<plugin name="cordova-plugin-speech-recognition2" source="npm" />
-	<plugin spec="https://github.com/VersoSolutions/CordovaClipboard" source="git" />
+	<plugin spec="https://github.com/VersoSolutions/CordovaClipboard.git" source="git" />
 	<plugin name="com.appodeal.plugin" source="npm" /> <!--android-->
 	<!--<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" source="git"/>--> <!--iOS-->
 
