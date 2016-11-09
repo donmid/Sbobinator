@@ -17,14 +17,9 @@
 <script src="js/appodeal.js"></script> 
 <script>
 document.addEventListener("offline", onOffline, false);
-
 function onOffline() {
-    alert("E mucca");
+    $( "#offlinepop" ).popup( "open" )
 }
-
-
-
-
 </script>
 	
 <script type="text/javascript">
@@ -33,7 +28,6 @@ var rec;
 var email;
 	
 document.addEventListener('deviceready', onDeviceReady, false);
-
 function onDeviceReady() {
 	  setTimeout(
         function() {
@@ -60,7 +54,6 @@ function Registra() {
 	document.getElementById("lngtouch").innerHTML = duringrec;
 	recognition.start();
 }
-
 function copy() {
 	window.plugins.copy(document.getElementById("q").value);
 	//window.plugins.paste(function (rec) { alert(rec); });
@@ -92,11 +85,23 @@ $("#q").keyup(function(){
 <p align="center" id="lngtouch"></p>
 </div>
 		
-		<div data-role="popup" id="txtpopup" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
+		<!--popup start--><div data-role="popup" id="txtpopup" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
 			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right ui-alt-icon">Close</a>
             <textarea id="q" name="q"></textarea>
             <a data-role="button" id="email" href="#">Email</a> <a data-role="button" onClick="copy()">Copy</a>
 		</div><!--/popup-->
+        
+        <!--popup start--><div data-role="popup" id="offlinepop" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
+			<div data-role="header" data-theme="a" class="ui-corner-top">
+				<h1>Non sei connesso</h1>
+			</div>
+			<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+				<h3 class="ui-title">E' richiesta una connessione internet per utilizzare l'app.</h3>
+				<p>Abilita una connessione dati o wifi e riavvia l'applicazione.</p>
+				<a href="#" onClick="navigator.app.exitApp();" data-role="button" data-inline="true" data-theme="c">Ok</a>     
+			</div>
+		</div><!--/popup-->
+        
 </div>
 
 
