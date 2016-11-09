@@ -53,11 +53,9 @@ function copy() {
 	window.plugins.paste(function (rec) { alert(rec); });
 }
 	
-function updatext() {
-	rec = document.getElementById("q").value;
-	var email = 'mailto:?cc=&bcc=&subject=&body=' + rec;
-			document.getElementById("email").setAttribute("href",email);
-}
+$("#q").keyup(function(){
+      rec = document.getElementById("q").value;
+});
 </script>
 
 <div data-role="page" data-theme="a" id="home">
@@ -81,7 +79,7 @@ function updatext() {
 		
 		<div data-role="popup" id="txtpopup" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
 			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right ui-alt-icon">Close</a>
-            <textarea id="q" name="q" onkeyup="javascript:updatext();"></textarea>
+            <textarea id="q" name="q"></textarea>
             <a data-role="button" id="email">Email</a> <a data-role="button" onClick="copy()">Copy</a>
 		</div><!--/popup-->
 </div>
