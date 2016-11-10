@@ -117,6 +117,9 @@
 	<gap:config-file platform="ios" parent="CFBundleShortVersionString">
                 <string>1.0.0</string>
         </gap:config-file>
+	<feature name="Notification">
+                <param name="ios-package" value="CDVNotification" />
+        </feature>
     </platform>
 
 </widget>
