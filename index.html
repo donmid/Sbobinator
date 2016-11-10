@@ -51,6 +51,12 @@ function Registra() {
 function copy() {
 	cordova.plugins.clipboard.copy(document.getElementById("q").value);
 	//cordova.plugins.clipboard.paste(function (text) { alert(text); });
+	navigator.notification.alert(
+    'You are the winner!',  // message
+    alertDismissed,         // callback
+    'Game Over',            // title
+    'Done'                  // buttonName
+);
 }
 	
 $("#q").change(function(){
