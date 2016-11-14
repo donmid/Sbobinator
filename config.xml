@@ -41,7 +41,6 @@
 	<plugin name="cordova-plugin-dialogs" source="npm"/>
 	<plugin name="cordova-plugin-network-information" source="npm"/>
 	<plugin name="cordova-plugin-speech-recognition2" source="npm" />
-	<plugin name="cordova-universal-clipboard" source="npm" />
 	<plugin name="com.appodeal.plugin" source="npm" /> <!--android-->
 	<!--<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" source="git"/>--> <!--iOS-->
 
