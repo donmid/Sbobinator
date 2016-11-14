@@ -15,6 +15,12 @@
 
 <body>
 <script src="js/appodeal.js"></script> 
+<script>
+document.addEventListener("offline", onOffline, false);
+function onOffline() {
+    $( "#offlinepop" ).popup( "open" )
+}
+</script>
 	
 <script type="text/javascript">
 var recognition;
@@ -48,14 +54,8 @@ function Registra() {
 	recognition.start();
 }
 function copy() {
-	cordova.plugins.clipboard.copy(document.getElementById("q").value);
-	//cordova.plugins.clipboard.paste(function (text) { alert(text); });
-	navigator.notification.alert(
-    'You are the winner!',  // message
-    alertDismissed,         // callback
-    'Game Over',            // title
-    'Done'                  // buttonName
-);
+	window.plugins.copy(document.getElementById("q").value);
+	//window.plugins.paste(function (rec) { alert(rec); });
 }
 	
 </script>
@@ -87,12 +87,12 @@ function copy() {
         
         <!--popup start--><div data-role="popup" id="offlinepop" class="ui-content" style="max-width:280px" data-position-to="window" data-inline="true">
 			<div data-role="header" data-theme="a" class="ui-corner-top">
-				<h1>Non sei connesso</h1>
+				<h1>Offline</h1>
 			</div>
 			<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
 				<h3 class="ui-title">E' richiesta una connessione internet per utilizzare l'app.</h3>
 				<p>Abilita una connessione dati o wifi e riavvia l'applicazione.</p>
-				<a href="#" onClick="navigator.app.exitApp();" data-role="button" data-inline="true" data-theme="c">Ok</a>     
+				<a href="#" data-rel="back" data-role="button" data-inline="true" data-theme="c">Ok</a>     
 			</div>
 		</div><!--/popup-->
         
@@ -168,13 +168,6 @@ function deflang(language) {
    script.type= 'text/javascript';
    script.src= 'js/' + window.localStorage.getItem("deflang") + '.js';
    head.appendChild(script);
-</script>
-	
-<script>
-document.addEventListener("offline", onOffline, false);
-function onOffline() {
-    $( "#offlinepop" ).popup( "open" )
-}
 </script>
 	
 <script>
