@@ -52,8 +52,7 @@ function Registra() {
 	document.getElementById("recbut").src="img/rec_on.gif";
 	document.getElementById("lngtouch").innerHTML = duringrec;
 	recognition.start();
-}
-	
+}	
 </script>
 
 <div data-role="page" data-theme="a" id="home">
@@ -86,8 +85,8 @@ function Registra() {
 				<h1>Offline</h1>
 			</div>
 			<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-				<h3 class="ui-title">E' richiesta una connessione internet per utilizzare l'app.</h3>
-				<p>Abilita una connessione dati o wifi e riavvia l'applicazione.</p>
+				<h3 class="ui-title" id="offtitle">An internet connection is required.</h3>
+				<p id="offtext">Please , enable wifi or cellphone data and retry.</p>
 				<a href="#" data-rel="back" data-role="button" data-inline="true" data-theme="c">Ok</a>     
 			</div>
 		</div><!--/popup-->
@@ -166,7 +165,7 @@ function deflang(language) {
    head.appendChild(script);
 </script>
 	
-<script>	
+<script>
 $("#q").keyup(function(){
       rec = $('#q').val();
       email = 'mailto:?cc=&bcc=&subject=&body=' + rec;
