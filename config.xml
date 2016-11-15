@@ -45,8 +45,8 @@
 	<plugin name="cordova-plugin-statusbar" source="npm"/>
 	<plugin name="cordova-plugin-network-information" source="npm"/>
 	<plugin name="cordova-plugin-speech-recognition2" source="npm" />
-	<plugin name="com.appodeal.plugin" source="npm" /> <!--android-->
-	<!--<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" source="git"/>--> <!--iOS-->
+	<!--<plugin name="com.appodeal.plugin" source="npm" />--> <!--android-->
+	<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" source="git"/> <!--iOS-->
 
    <access origin="*"/>
     <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
