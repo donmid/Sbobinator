@@ -6,8 +6,7 @@ body {
     font-family: "KaiRegular";
 }
 .ui-page {
-	background-image:url(../img/theme_bg.jpg);
-    background-size:cover;
+	background-color: #FFFFFF;
 }
 .ui-header {
 	background: none;
