@@ -18,7 +18,8 @@
 <script>
 document.addEventListener("offline", onOffline, false);
 function onOffline() {
-    $( "#offlinepop" ).popup( "open" )
+    $( "#offlinepop" ).popup( "open" );
+	document.getElementById("recbut").src="img/rec_off.png";
 }
 </script>
 	
@@ -56,6 +57,7 @@ function Registra() {
 </script>
 
 <div data-role="page" data-theme="a" id="home">
+
 <!-- leftpanel1  -->
 	<div data-role="panel" id="menu" data-position="left" data-display="overlay" data-theme="a" class="ui-nodisc-icon ui-alt-icon">
 	<img src="img/logo.jpg" class="navImg" ></img>
@@ -64,6 +66,8 @@ function Registra() {
         <a class="ui-btn ui-shadow ui-corner-all ui-icon-mysettings ui-btn-icon-notext ui-btn-inline" style="background:none;box-shadow: none;border:none;"></a> <a href="#" id="lnglang" onClick="$.mobile.changePage('#preselect', {transition: 'slide'});"></a> <br/>
         <a class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-b ui-btn-inline" style="background:none;box-shadow: none;border:none;"></a> <a href="#txtpopup" data-rel="popup" id="lngaudio" onclick="Appodeal.show(Appodeal.INTERSTITIAL | Appodeal.SKIPPABLE_VIDEO | Appodeal.REWARDED_VIDEO | Appodeal.NON_SKIPPABLE_VIDEO)"></a> <br/>
         <a class="ui-btn ui-shadow ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-inline" style="background:none;box-shadow: none;border:none;"></a> <a href="#" id="author" onClick="cordova.InAppBrowser.open('http://www.stefanoiodice.it', '_blank', 'location=no,toolbarposition=top,closebuttoncaption=Close')"></a>
+        
+       <div data-role="footer" data-position="fixed" style="background:none;border:none;margin-left:20px;">V. 1.0.0</div> 
 	</div><!-- /leftpanel1 -->
 
 <div data-role="header">
