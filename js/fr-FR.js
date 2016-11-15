@@ -4,5 +4,6 @@ document.getElementById("lngaudio").innerHTML = 'Derniere conversion';
 document.getElementById("lnglang").innerHTML = 'Changer langue';
 document.getElementById("offtitle").innerHTML = 'Une connexion Internet est necessaire.';
 document.getElementById("offtext").innerHTML = 'Activer les donnees wifi ou cellulaire et reessayer.';
+document.getElementById("author").innerHTML = 'Auteur';
 var duringrec = 'Enregistrement...';
 var postrec = 'Touche pour enregistrer';
