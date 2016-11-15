@@ -26,7 +26,7 @@
     <preference name="stay-in-webview"            value="false" />    <!-- ios: external links should open in the default browser, 'true' would use the webview the app lives in -->
     <preference name="StatusBarOverlaysWebView"   value="true" />
     <preference name="StatusBarBackgroundColor"   value="#000000" />
-    <preference name="ios-statusbarstyle"         value="lightcontent" />   <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
+    <preference name="StatusBarStyle"             value="lightcontent" />   <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
     <preference name="detect-data-types"          value="true" />           <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
     <preference name="exit-on-suspend"            value="false" />          <!-- ios: if set to true, app will terminate when home button is pressed -->
     <preference name="show-splash-screen-spinner" value="true" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
@@ -45,8 +45,8 @@
 	<plugin name="cordova-plugin-statusbar" source="npm"/>
 	<plugin name="cordova-plugin-network-information" source="npm"/>
 	<plugin name="cordova-plugin-speech-recognition2" source="npm" />
-	<!--<plugin name="com.appodeal.plugin" source="npm" />--> <!--android-->
-	<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" source="git"/> <!--iOS-->
+	<plugin name="com.appodeal.plugin" source="npm" /> <!--android-->
+	<!--<plugin spec="https://github.com/appodeal/appodeal-cordova-plugin.git" source="git"/>--> <!--iOS-->
 
    <access origin="*"/>
     <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
