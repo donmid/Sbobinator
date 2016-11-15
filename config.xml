@@ -40,6 +40,7 @@
 	<plugin name="cordova-plugin-media-capture" source="npm"/>
 	<plugin name="cordova-plugin-dialogs" source="npm"/>
 	<plugin name="cordova-plugin-inappbrowser" source="npm"/>
+	<plugin name="cordova-plugin-statusbar" source="npm"/>
 	<plugin name="cordova-plugin-network-information" source="npm"/>
 	<plugin name="cordova-plugin-speech-recognition2" source="npm" />
 	<!--<plugin name="com.appodeal.plugin" source="npm" />--> <!--android-->
